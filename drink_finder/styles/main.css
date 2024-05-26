@@ -1,3 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 html {
-    background-color: #212121;
+    background-color: #000000;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Nunito Sans", sans-serif;
+    font-style: normal;
+    color: #F5F5F7;
+}
+
+.wrapper {
+    width: 800px;
+    background: rgb(57, 5, 33);
+    background: linear-gradient(51deg, rgba(57, 5, 33, 1) 14%, rgba(1, 32, 81, 1) 100%);
+    border-radius: 16px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+    height: 360px;
+    padding: 20px 40px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background-image: url('../img/bar.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .40);
+    z-index: -1;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.search {
+    padding: 10px 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, .85);
+}
+
+.drink-list {
+    padding: 20px 40px;
+}
+
+h2 {
+    padding: 30px 0;
+    color: #ff5432;
+}
+
+ul {
+    padding-bottom: 30px;
+    font-size: 23px;
+    list-style: none;
+}
+
+li {
+    padding: 8px 30px;
+    border-bottom: 1px solid rgba(226, 226, 226, 0.268);
+}
+
+li:last-child {
+    border-bottom: 0;
 }
