@@ -70,41 +70,26 @@ input, select {
     border: none;
     color: white;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.count::before,
-.count::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 5px;
-    background-color: #FF451A;
-    transition: width 0.3s ease, transform 0.3s ease;
+.count:hover {
+    transform: translate(-10px, -10px);
+    box-shadow: 10px 10px 0 0 black;
 }
 
-.count::before {
-    bottom: -10px;
-    bottom: 0;
+.cost-info {
+    display: none;
+    margin-top: 30px;
+    font-size: 20px;
 }
 
-.count::after {
-    right: -10px;
-    top: 0;
-    height: 100%;
-    width: 5px;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.3s ease;
+.cost {
+    font-weight: bold;
 }
 
-.count:hover::before {
-    width: 100%;
+.error {
+    font-size: 18px;
+    color: rgb(199,63,29);
+    text-align: center;
 }
-
-.count:hover::after {
-    transform: scaleY(1);
-}
-
-
-
