@@ -1,50 +1,32 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const priceInput = document.getElementById('price'); // pole na kwotę
-    const peopleInput = document.getElementById('people'); // pole na ilość osób
-    const tipSelect = document.getElementById('tip'); // wybór napiwku
-    const calculateButton = document.querySelector('.count'); // przycisk "Oblicz"
-    const errorElement = document.querySelector('.error'); // miejsce na błędy
-    const costInfo = document.querySelector('.cost-info'); // miejsce na wynik
-    const costSpan = document.querySelector('.cost'); // miejsce na kwotę na osobę
-
-    calculateButton.addEventListener('click', () => {
-        validateInputs(priceInput, peopleInput, tipSelect, errorElement, costInfo, costSpan);
-    });
-});
+const price = document.querySelector('#price')
+const people = document.querySelector('#people')
+const tip = document.querySelector('#tip')
+const countButton = document.querySelector('.count')
+const error = document.querySelector('.error')
+const costInfo = document.querySelector('.cost-info')
+const cost = document.querySelector('.cost')
 
 
-const validateInputs = (priceInput, peopleInput, tipSelect, errorElement, costInfo, costSpan) => {
-    const price = parseFloat(priceInput.value.trim());
-    const people = parseInt(peopleInput.value.trim());
-    const tip = parseFloat(tipSelect.value);
-
-
-    if (isNaN(price) || price <= 0) {
-        errorElement.textContent = 'Wprowadź poprawną kwotę do zapłaty.';
+const showBill = () => {
+    if (price.value == " " || people.value == " " || tip.value == 0) {
+        error.textContent = 'Uzupełnij wszystkie pola.';
         costInfo.style.display = 'none';
-        return;
+    } else {
+        error.textContent = ' ';
+        countBill()
     }
+};
 
-    if (isNaN(people) || people <= 0) {
-        errorElement.textContent = 'Wprowadź poprawną liczbę osób.';
-        costInfo.style.display = 'none';
-        return;
-    }
-
-    if (isNaN(tip)) {
-        errorElement.textContent = "Wybierz poprawny napiwek.";
-        costInfo.style.display = "none";
-        return;
-    }
-
-    errorElement.textContent = ''
-    calculateBill(price, people, tip, costSpan);
+const countBill = () => {
+    const newPrice = parseFloat(price.value);
+    const newPeople = parseInt(people.value);
+    const newTip = parseFloat(tip.value);
+    
+    const sum = (newPrice + (newPrice * newTip)) / newPeople;
     costInfo.style.display = 'block'
+
+    cost.textContent = sum.toFixed(2)
 }
 
-function calculateBill(price, people, tip, costSpan) {
-    const total = price + (price * tip);
-    const perPerson = total / people;
-    costSpan.textContent = perPerson.toFixed(2);
-}
 
+countButton.addEventListener('click', showBill);
